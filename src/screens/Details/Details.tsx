@@ -1,11 +1,11 @@
 import React from 'react';
 import {ScrollView, View} from 'react-native';
-import {Appbar, Button, Text} from 'react-native-paper';
+import {Button, Text} from 'react-native-paper';
 import {RouteProp} from '@react-navigation/native';
 import FastImage from 'react-native-fast-image';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
-import {useAppNavigation} from '../../hooks/useAppNavigation';
 import {MovieItem} from '../../MDTypes';
+import {Header} from '../../components/Header';
 import {styles} from './styles';
 
 type Props = {
@@ -13,16 +13,11 @@ type Props = {
 };
 
 export const DetailsScreen = ({route}: Props) => {
-  const {navigation} = useAppNavigation();
   const item = route?.params?.item;
 
   return (
     <>
-      <Appbar.Header theme={{dark: true}}>
-        <Appbar.BackAction onPress={() => navigation.goBack()} />
-        <Appbar.Content title="Movie Details" />
-        <Appbar.Action icon="dots-vertical" onPress={() => {}} />
-      </Appbar.Header>
+      <Header title="Movie Details" isBack />
       <View style={styles.wrapper}>
         <ScrollView>
           <View style={styles.titleView}>

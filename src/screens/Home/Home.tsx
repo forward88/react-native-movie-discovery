@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
 import {FlatList} from 'react-native';
-import {Appbar} from 'react-native-paper';
 import {useAppNavigation} from '../../hooks/useAppNavigation';
 import {fetchMovies} from '../../redux/slices/movie';
 import ListItem from '../../components/ListItem';
+import {Header} from '../../components/Header';
 import {MovieItem} from '../../MDTypes';
 
 export const HomeScreen = () => {
@@ -21,10 +21,7 @@ export const HomeScreen = () => {
 
   return (
     <>
-      <Appbar.Header theme={{dark: true}}>
-        <Appbar.Content title="Pop Movies" />
-        <Appbar.Action icon="dots-vertical" onPress={() => {}} />
-      </Appbar.Header>
+      <Header title="Pop Movies" />
       <FlatList
         data={movies}
         numColumns={2}
