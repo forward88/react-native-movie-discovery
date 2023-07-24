@@ -59,4 +59,7 @@ export const styles = StyleSheet.create({
     padding: 16,
     marginBottom: 8,
   },
+  ratingText: {
+    marginTop: 24,
+  },
 });

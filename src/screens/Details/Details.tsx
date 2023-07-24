@@ -6,6 +6,7 @@ import FastImage from 'react-native-fast-image';
 import EvilIcons from 'react-native-vector-icons/EvilIcons';
 import {MovieItem} from '../../MDTypes';
 import {Header} from '../../components/Header';
+import {IMAGE_URL, MD_TEXTS} from '../../utils/constants';
 import {styles} from './styles';
 
 type Props = {
@@ -17,7 +18,7 @@ export const DetailsScreen = ({route}: Props) => {
 
   return (
     <>
-      <Header title="Movie Details" isBack />
+      <Header title={MD_TEXTS.detail_title} isBack />
       <View style={styles.wrapper}>
         <ScrollView>
           <View style={styles.titleView}>
@@ -30,17 +31,19 @@ export const DetailsScreen = ({route}: Props) => {
               <View>
                 <FastImage
                   source={{
-                    uri: `https://image.tmdb.org/t/p/w185${item?.backdrop_path}`,
+                    uri: `${IMAGE_URL}${item?.backdrop_path}`,
                   }}
                   style={styles.backdrop}
                 />
               </View>
               <View style={styles.dateView}>
                 <Text variant="bodyLarge">{item?.release_date}</Text>
-                <Text variant="bodyMedium">{item?.title}</Text>
-                <Text variant="bodyMedium">{item?.vote_average}/10</Text>
+                <Text variant="bodyMedium">{item?.vote_count}</Text>
+                <Text variant="bodyMedium" style={styles.ratingText}>
+                  {item?.vote_average}/10
+                </Text>
                 <Button mode="contained" style={styles.favoriteBtn}>
-                  Add to Favorite
+                  {MD_TEXTS.add_favorite}
                 </Button>
               </View>
             </View>
@@ -48,14 +51,16 @@ export const DetailsScreen = ({route}: Props) => {
               <Text variant="bodyMedium">{item?.overview}</Text>
             </View>
             <View style={styles.trailerView}>
-              <Text variant="bodyMedium">TRAILERS</Text>
+              <Text variant="bodyMedium">{MD_TEXTS.trailers}</Text>
             </View>
             <View style={styles.contentView}>
               {item?.genre_ids.map((genre: number, index: number) => {
                 return (
                   <View style={styles.genreItem} key={genre}>
                     <EvilIcons name="play" size={20} />
-                    <Text variant="bodyMedium">Play trailer {index + 1}</Text>
+                    <Text variant="bodyMedium">
+                      {MD_TEXTS.play_trailer} {index + 1}
+                    </Text>
                   </View>
                 );
               })}

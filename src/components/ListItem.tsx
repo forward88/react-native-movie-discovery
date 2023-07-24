@@ -5,7 +5,7 @@ import FastImage from 'react-native-fast-image';
 import {TouchableRipple} from 'react-native-paper';
 import {MovieItem} from '../MDTypes';
 import {useAppNavigation} from '../hooks/useAppNavigation';
-import {MD_PAGES, screenWidth} from '../utils/constants';
+import {IMAGE_URL, MD_PAGES, screenWidth} from '../utils/constants';
 
 const ListItem = ({item}: {item: MovieItem}) => {
   const {navigation} = useAppNavigation();
@@ -26,7 +26,7 @@ const ListItem = ({item}: {item: MovieItem}) => {
       testID="movie-item">
       <View style={styles.movieItemWrapper}>
         <FastImage
-          source={{uri: `https://image.tmdb.org/t/p/w185${item.poster_path}`}}
+          source={{uri: `${IMAGE_URL}${item.poster_path}`}}
           style={styles.imageItem}
         />
       </View>

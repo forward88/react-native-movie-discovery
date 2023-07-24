@@ -5,6 +5,7 @@ import {fetchMovies} from '../../redux/slices/movie';
 import ListItem from '../../components/ListItem';
 import {Header} from '../../components/Header';
 import {MovieItem} from '../../MDTypes';
+import {MD_TEXTS} from '../../utils/constants';
 
 export const HomeScreen = () => {
   const {dispatch, useAppSelector} = useAppNavigation();
@@ -21,7 +22,7 @@ export const HomeScreen = () => {
 
   return (
     <>
-      <Header title="Pop Movies" />
+      <Header title={MD_TEXTS.home_title} />
       <FlatList
         data={movies}
         numColumns={2}

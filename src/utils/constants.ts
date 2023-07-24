@@ -18,3 +18,13 @@ export const MD_COLORS = {
   gray: '#DEDEDE',
   white100: '#FAFAFA',
 };
+
+export const IMAGE_URL = 'https://image.tmdb.org/t/p/w185';
+
+export const MD_TEXTS = {
+  home_title: 'Pop Movies',
+  detail_title: 'Movie Details',
+  add_favorite: 'Add to Favorite',
+  trailers: 'TRAILERS',
+  play_trailer: 'Play trailer',
+};
