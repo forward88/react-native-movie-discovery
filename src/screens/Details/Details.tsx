@@ -9,12 +9,12 @@ import {MovieItem} from '../../MDTypes';
 import {styles} from './styles';
 
 type Props = {
-  route: RouteProp<{params: {item: MovieItem}}, 'params'>;
+  route?: RouteProp<{params: {item: MovieItem}}, 'params'>;
 };
 
 export const DetailsScreen = ({route}: Props) => {
   const {navigation} = useAppNavigation();
-  const {item} = route.params;
+  const item = route?.params?.item;
 
   return (
     <>
@@ -27,7 +27,7 @@ export const DetailsScreen = ({route}: Props) => {
         <ScrollView>
           <View style={styles.titleView}>
             <Text variant="bodyLarge" style={styles.movieTitle}>
-              {item.title}
+              {item?.title}
             </Text>
           </View>
           <View style={styles.container}>
@@ -35,28 +35,28 @@ export const DetailsScreen = ({route}: Props) => {
               <View>
                 <FastImage
                   source={{
-                    uri: `https://image.tmdb.org/t/p/w185${item.backdrop_path}`,
+                    uri: `https://image.tmdb.org/t/p/w185${item?.backdrop_path}`,
                   }}
                   style={styles.backdrop}
                 />
               </View>
               <View style={styles.dateView}>
-                <Text variant="bodyLarge">{item.release_date}</Text>
-                <Text variant="bodyMedium">{item.title}</Text>
-                <Text variant="bodyMedium">{item.vote_average}/10</Text>
+                <Text variant="bodyLarge">{item?.release_date}</Text>
+                <Text variant="bodyMedium">{item?.title}</Text>
+                <Text variant="bodyMedium">{item?.vote_average}/10</Text>
                 <Button mode="contained" style={styles.favoriteBtn}>
                   Add to Favorite
                 </Button>
               </View>
             </View>
             <View style={styles.contentView}>
-              <Text variant="bodyMedium">{item.overview}</Text>
+              <Text variant="bodyMedium">{item?.overview}</Text>
             </View>
             <View style={styles.trailerView}>
               <Text variant="bodyMedium">TRAILERS</Text>
             </View>
             <View style={styles.contentView}>
-              {item.genre_ids.map((genre, index) => {
+              {item?.genre_ids.map((genre: number, index: number) => {
                 return (
                   <View style={styles.genreItem} key={genre}>
                     <EvilIcons name="play" size={20} />

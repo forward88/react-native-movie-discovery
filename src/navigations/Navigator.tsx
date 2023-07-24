@@ -3,20 +3,22 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {HomeScreen} from '../screens/Home/Home';
 import {DetailsScreen} from '../screens/Details/Details';
+import {RootStackParamList} from '../MDTypes';
+import {MD_PAGES} from '../utils/constants';
 
-const StackNavigator = createNativeStackNavigator();
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function AppNavigator() {
   return (
-    <NavigationContainer>
-      <StackNavigator.Navigator
+    <NavigationContainer independent={true}>
+      <Stack.Navigator
         screenOptions={{
           headerShown: false,
         }}
-        initialRouteName={'Home'}>
-        <StackNavigator.Screen name="Home" component={HomeScreen} />
-        <StackNavigator.Screen name="Details" component={DetailsScreen} />
-      </StackNavigator.Navigator>
+        initialRouteName={MD_PAGES.home}>
+        <Stack.Screen name={MD_PAGES.home} component={HomeScreen} />
+        <Stack.Screen name={MD_PAGES.details} component={DetailsScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 }
