@@ -5,7 +5,7 @@ import FastImage from 'react-native-fast-image';
 import {TouchableRipple} from 'react-native-paper';
 import {MovieItem} from '../MDTypes';
 import {useAppNavigation} from '../hooks/useAppNavigation';
-import {screenWidth} from '../utils/constants';
+import {MD_PAGES, screenWidth} from '../utils/constants';
 
 const ListItem = ({item}: {item: MovieItem}) => {
   const {navigation} = useAppNavigation();
@@ -13,7 +13,7 @@ const ListItem = ({item}: {item: MovieItem}) => {
   const onPressItem = (param: MovieItem) => {
     navigation.dispatch(
       CommonActions.navigate({
-        name: 'Details',
+        name: MD_PAGES.details,
         params: {item: param},
       }),
     );
